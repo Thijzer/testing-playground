@@ -4,6 +4,7 @@ namespace Domain\PurchaseOrder;
 
 class PurchaseOrder
 {
+    /** @var PurchaseOrderId */
     private $id;
 
     /** @var PurchaseOrderLine[] */
@@ -12,9 +13,10 @@ class PurchaseOrder
     /** @var string */
     private $supplierId;
 
-    public function __construct(array $purchaseOrderLines, string $supplierId)
+    public function __construct(PurchaseOrderId $id, array $purchaseOrderLines, string $supplierId)
     {
         $this->purchaseOrderLines = $purchaseOrderLines;
         $this->supplierId = $supplierId;
+        $this->id = $id;
     }
 }
