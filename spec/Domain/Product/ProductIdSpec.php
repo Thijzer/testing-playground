@@ -8,13 +8,19 @@ use Prophecy\Argument;
 
 class ProductIdSpec extends ObjectBehavior
 {
-    function let()
-    {
-        $this->beConstructedWith('nexus-6');
-    }
-
     function it_is_initializable()
     {
+        $this->beConstructedWith('nexus-6');
+
         $this->shouldHaveType(ProductId::class);
+    }
+
+    function it_throws_an_exception_if_id_is_empty()
+    {
+        $this->beConstructedWith('');
+
+        $this->shouldThrow(
+            \InvalidArgumentException::class
+        )->duringInstantiation();
     }
 }

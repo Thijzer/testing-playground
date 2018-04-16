@@ -9,6 +9,10 @@ class ProductId
 
     public function __construct(string $productId)
     {
+        if ('' === $productId || null === $productId) {
+            throw new \InvalidArgumentException('ID cannot be null');
+        }
+
         $this->productId = $productId;
     }
 }
