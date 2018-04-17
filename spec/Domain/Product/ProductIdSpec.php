@@ -23,4 +23,10 @@ class ProductIdSpec extends ObjectBehavior
             \InvalidArgumentException::class
         )->duringInstantiation();
     }
+
+    function it_casts_to_string()
+    {
+        $this->beConstructedWith('nexus-6');
+        $this->__toString()->shouldReturn('nexus-6');
+    }
 }

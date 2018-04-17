@@ -15,4 +15,9 @@ class ProductId
 
         $this->productId = $productId;
     }
+
+    public function __toString(): string
+    {
+        return $this->productId;
+    }
 }

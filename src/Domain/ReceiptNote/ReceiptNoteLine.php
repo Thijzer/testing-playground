@@ -25,4 +25,14 @@ class ReceiptNoteLine
         $this->productId = $productId;
         $this->quantity = $quantity;
     }
+
+    public function productId(): ProductId
+    {
+        return $this->productId;
+    }
+
+    public function quantity(): float
+    {
+        return $this->quantity;
+    }
 }

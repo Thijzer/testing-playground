@@ -32,4 +32,18 @@ class ReceiptNoteLineSpec extends ObjectBehavior
             \InvalidArgumentException::class
         )->duringInstantiation();
     }
+
+    function it_returns_the_product_id()
+    {
+        $productId = new ProductId('fifi');
+        $this->beConstructedWith($productId, 19);
+        $this->productId()->shouldReturn($productId);
+    }
+
+    function it_returns_the_quantity()
+    {
+        $productId = new ProductId('fifi');
+        $this->beConstructedWith($productId, 19);
+        $this->quantity()->shouldReturn(19.0);
+    }
 }
