@@ -41,7 +41,12 @@ class StockBalance
         if ($this->stockLevel() - $quantity < 0) {
             throw new \LogicException('Stock level can not become negative');
         }
-        
+
         $this->stockLevel -= $quantity;
+    }
+
+    public function productId(): ProductId
+    {
+        return $this->productId;
     }
 }

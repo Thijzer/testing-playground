@@ -66,5 +66,10 @@ class StockBalanceSpec extends ObjectBehavior
         $this->decrease(5);
         $this->stockLevel($this->productId)->shouldReturn(4.0);
     }
+
+    function it_exposes_the_product_id()
+    {
+        $this->productId()->shouldReturn($this->productId);
+    }
 }
 
