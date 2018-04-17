@@ -49,7 +49,12 @@ class PurchaseOrderSpec extends ObjectBehavior
     function it_does_not_place_an_order_without_lines(PurchaseOrderId $id)
     {
         $this->beConstructedWith($id, [], 'yumyum');
+        $this->shouldThrow(\LogicException::class)->during('place', []);
+    }
+
+    function it_cannot_add_a_line_if_the_order_is_placed(PurchaseOrderLine $purchaseOrderLine)
+    {
         $this->place();
-        $this->placed()->shouldReturn(false);
+        $this->shouldThrow(\LogicException::class)->during('addLine', [$purchaseOrderLine]);
     }
 }
