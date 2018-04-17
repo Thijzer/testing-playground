@@ -30,7 +30,7 @@ class ReceiptNote
     public function __invoke()
     {
         foreach ($this->lines as $line) {
-            $this->events[] = new GoodsReceived($line->productId(), $line->quantity());
+            $this->events[] = new GoodsReceived($this->purchaseOrderId, $line->productId(), $line->quantity());
         }
     }
 

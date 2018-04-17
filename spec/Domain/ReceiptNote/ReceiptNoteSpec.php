@@ -33,7 +33,7 @@ class ReceiptNoteSpec extends ObjectBehavior
         $this->shouldHaveType(ReceiptNote::class);
     }
 
-    function it_records_that_goods_are_received($productId1, $productId2)
+    function it_records_that_goods_are_received()
     {
         $this->__invoke();
         $events = $this->events();

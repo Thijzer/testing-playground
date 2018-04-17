@@ -33,4 +33,34 @@ class PurchaseOrderLineSpec extends ObjectBehavior
             \InvalidArgumentException::class
         )->duringInstantiation();
     }
+
+    function it_returns_the_product_id()
+    {
+        $productId = new ProductId('foo');
+        $this->beConstructedWith($productId, 10);
+        $this->productId()->shouldReturn($productId);
+    }
+
+    function it_returns_the_quantity()
+    {
+        $productId = new ProductId('foo');
+        $this->beConstructedWith($productId, 10);
+        $this->quantity()->shouldReturn(10.0);
+    }
+
+    function it_returns_the_quantity_received()
+    {
+        $productId = new ProductId('foo');
+        $this->beConstructedWith($productId, 10);
+        $this->quantityReceived()->shouldReturn(0.0);
+    }
+
+    function it_receive_goods()
+    {
+        $productId = new ProductId('foo');
+        $this->beConstructedWith($productId, 10);
+
+        $this->receiveGoods(12);
+        $this->quantityReceived()->shouldReturn(12.0);
+    }
 }
