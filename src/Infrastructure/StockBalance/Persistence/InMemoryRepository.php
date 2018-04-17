@@ -20,12 +20,14 @@ class InMemoryRepository implements StockBalance\Repository
         $this->stockBalances[] = $stockBalance;
     }
 
-    public function find(ProductId $productId): StockBalance
+    public function find(ProductId $productId): ?StockBalance
     {
         foreach ($this->stockBalances as $stockBalance) {
             if ($productId === $stockBalance->productId()) {
                 return $stockBalance;
             }
         }
+
+        return null;
     }
 }

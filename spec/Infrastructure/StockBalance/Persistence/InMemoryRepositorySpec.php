@@ -33,4 +33,9 @@ class InMemoryRepositorySpec extends ObjectBehavior
         $stockBalance->productId()->willReturn($id);
         $this->find($id)->shouldReturn($stockBalance);
     }
+
+    function it_returns_null_when_the_stock_balance_does_not_exist(ProductId $id)
+    {
+        $this->find($id)->shouldReturn(null);
+    }
 }

@@ -22,4 +22,18 @@ class GoodsReceivedSpec extends ObjectBehavior
         $this->beConstructedWith(new ProductId('nexus-6'), 12);
         $this->shouldBeAnInstanceOf(Event::class);
     }
+
+    function it_returns_the_product_id()
+    {
+        $productId = new ProductId('nexus-6');
+        $this->beConstructedWith($productId, 12);
+        $this->productId()->shouldReturn($productId);
+    }
+
+    function it_returns_the_quantity()
+    {
+        $productId = new ProductId('nexus-6');
+        $this->beConstructedWith($productId, 12);
+        $this->quantity()->shouldReturn(12.0);
+    }
 }
