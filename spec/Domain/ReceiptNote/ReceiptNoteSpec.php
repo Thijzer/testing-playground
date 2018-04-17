@@ -6,6 +6,7 @@ use Domain\Product\ProductId;
 use Domain\PurchaseOrder\PurchaseOrderId;
 use Domain\ReceiptNote\GoodsReceived;
 use Domain\ReceiptNote\ReceiptNote;
+use Domain\ReceiptNote\ReceiptNoteId;
 use Domain\ReceiptNote\ReceiptNoteLine;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -13,6 +14,7 @@ use Prophecy\Argument;
 class ReceiptNoteSpec extends ObjectBehavior
 {
     function let(
+        ReceiptNoteId $id,
         PurchaseOrderId $purchaseOrderId,
         ReceiptNoteLine $receiptNoteLine1,
         ReceiptNoteLine $receiptNoteLine2,
@@ -23,7 +25,7 @@ class ReceiptNoteSpec extends ObjectBehavior
         $receiptNoteLine1->quantity()->willReturn(21);
         $receiptNoteLine2->productId()->willReturn($productId2);
         $receiptNoteLine2->quantity()->willReturn(12);
-        $this->beConstructedWith($purchaseOrderId, [$receiptNoteLine1, $receiptNoteLine2]);
+        $this->beConstructedWith($id, $purchaseOrderId, [$receiptNoteLine1, $receiptNoteLine2]);
     }
 
     function it_is_initializable()
@@ -38,5 +40,10 @@ class ReceiptNoteSpec extends ObjectBehavior
         $events->shouldHaveCount(2);
         $events[0]->shouldReturnAnInstanceOf(GoodsReceived::class);
         $events[1]->shouldReturnAnInstanceOf(GoodsReceived::class);
+    }
+
+    function it_returns_the_id()
+    {
+        $this->id()->shouldReturnAnInstanceOf(ReceiptNoteId::class);
     }
 }
