@@ -10,13 +10,21 @@ use Prophecy\Argument;
 
 class PurchaseOrderSpec extends ObjectBehavior
 {
-    function let(PurchaseOrderId $id, PurchaseOrderLine $purchaseOrderLine)
+    function it_is_initializable(PurchaseOrderId $id, PurchaseOrderLine $purchaseOrderLine)
     {
         $this->beConstructedWith($id, [$purchaseOrderLine], 'yumyum');
+        $this->shouldHaveType(PurchaseOrder::class);
     }
 
-    function it_is_initializable()
+    function it_can_be_constructed_with_no_line(PurchaseOrderId $id)
     {
+        $this->beConstructedWith($id, [], 'yumyum');
         $this->shouldHaveType(PurchaseOrder::class);
+    }
+
+    function it_adds_a_line_to_an_order(PurchaseOrderId $id, PurchaseOrderLine $purchaseOrderLine)
+    {
+        $this->beConstructedWith($id, [$purchaseOrderLine], 'yumyum');
+        $this->addLine($purchaseOrderLine);
     }
 }

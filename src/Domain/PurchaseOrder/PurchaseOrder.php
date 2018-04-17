@@ -19,4 +19,9 @@ class PurchaseOrder
         $this->supplierId = $supplierId;
         $this->id = $id;
     }
+
+    public function addLine(PurchaseOrderLine $purchaseOrderLine): void
+    {
+        $this->purchaseOrderLines[] = $purchaseOrderLine;
+    }
 }
