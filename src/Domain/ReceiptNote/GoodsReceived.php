@@ -3,8 +3,9 @@
 namespace Domain\ReceiptNote;
 
 use Domain\Product\ProductId;
+use Symfony\Component\EventDispatcher\Event;
 
-final class GoodsReceived
+final class GoodsReceived extends Event
 {
     /** @var ProductId */
     private $productId;

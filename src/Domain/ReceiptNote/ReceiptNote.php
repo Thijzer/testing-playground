@@ -3,6 +3,7 @@
 namespace Domain\ReceiptNote;
 
 use Domain\PurchaseOrder\PurchaseOrderId;
+use Symfony\Component\EventDispatcher\Event;
 
 class ReceiptNote
 {
@@ -15,7 +16,7 @@ class ReceiptNote
     /** @var ReceiptNoteLine[] */
     private $lines;
 
-    /** @var array */
+    /** @var Event[] */
     private $events;
 
     public function __construct(ReceiptNoteId $id, PurchaseOrderId $purchaseOrderId, array $lines)
